@@ -7,7 +7,7 @@ var WebSocketServer = require('websocket').server;
 var http = require('http');
 
 var server = http.createServer(function(request, response) {
-	var res = (new Date()) + ' Received request for ' + request;
+	var res = (new Date()) + ' Received request for ' + request.method;
     console.log(res);
     response.writeHead(200);
     response.end(res);
@@ -16,7 +16,7 @@ server.listen(8080, function() {
     console.log((new Date()) + ' Server is listening on port 8080');
 });
 
-wsServer = new WebSocketServer({
+/*wsServer = new WebSocketServer({
     httpServer: server,
     // You should not use autoAcceptConnections for production
     // applications, as it defeats all standard cross-origin protection
@@ -54,4 +54,4 @@ wsServer.on('request', function(request) {
     connection.on('close', function(reasonCode, description) {
         console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
     });
-});
+});*/
